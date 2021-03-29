@@ -1,0 +1,101 @@
+<div>
+  <div class="alert alert-danger overflow-hidden" ng-if="errorMessage">{{ errorMessage }}</div>
+    <div class="border rounded  mx-1">
+        <div class="row" >
+      <div class="col-sm-8 mt-3 " >
+     
+              <div class="dropdown my-3   row">
+              <span class="mx-2 col-sm-2">category</span>
+              <select class=" col-sm-3"  ng-change="updateMeals()"  ng-options="x.name for x in categories"  ng-model="selectedCategory">
+                <option value="" selected disabled hidden>Choose Category</option>
+              </select>
+              <!-- <h1>You selected: {{selectedCategory.name}}</h1> -->
+            </div>
+           
+            <div class="dropdown my-3   row">
+              <span class="mx-2 col-sm-2">meal</span>
+              <select class=" col-sm-3" ng-change="updatePrice()" ng-options="x.name for x in meals" value="Choose Meal"  ng-model="selectedMeal">
+                <option value="" selected disabled hidden>Choose Meal</option>
+              </select>
+              <!-- <h1>You selected: {{selectedMeal.name}}</h1> -->
+            </div>
+            <div class="row ">
+              <span class="mx-2 col-sm-2" >q</span>
+              <input class=" col-sm-3" id="ex3" type="number" min="1" max="100" ng-change="updatePrice()" ng-model="quantity">
+            </div>
+            
+      </div>
+      <div class="col-sm-4 mt-4" > 
+          <div>
+          <div class="checkbox my-2">
+          <label><input type="checkbox" ng-change="updatePrice()" ng-model="combo" > Combo</label>
+        </div>
+        <div class="checkbox my-2">
+          <label><input type="checkbox" ng-change="updatePrice()" ng-model="spicy"> Spicy</label>
+        </div></div>
+       
+      </div>
+  </div>
+  
+  <div class="row" >
+      <div class="col-sm-6"></div>
+      <div class="col-sm-4">
+          <h3 class="mt-2  ">Price {{price}} LE</h3>
+    
+      </div>
+      <div class="col-sm-1 mt-5 my-2">
+         
+      <button type="button" ng-click="addOrder()" class="  btn btn-warning ms-5">Add</button>
+  </div>
+      
+  </div>
+    </div>
+    <div class="my-5 " style="min-height: 20% !important;">
+       <div class="h-50" style="overflow-y: scroll">
+      <table class="table table-bordered  ">
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+              <th scope="col">Addons</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="rowContent in rows">
+              <td>
+                {{rowContent.item}}
+              </td> 
+              <td>
+                {{rowContent.Q}}
+              </td>
+              <td>
+                {{rowContent.price}}
+             </td>
+             <td>
+              {{rowContent.addons}}
+           </td>
+           <td>
+            {{rowContent.total}}
+         </td>
+
+            </tr>
+            <!-- <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+              <td>@twitter</td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div> 
+        <div class="row">
+            <div class="col-sm-10"></div>
+            <div class="col-sm-2">
+                <h3>Total {{total}} LE</h3>
+                <button type="button" class="btn btn-warning my-2 " ng-click="newOrder()">New order</button>
+            </div>
+        </div>
+    </div>
+</div>
