@@ -1,3 +1,4 @@
+email: ahmedreda7296@gmail.com
 this is the repository of the angular test
 I used angularjs 1.5.11
 
